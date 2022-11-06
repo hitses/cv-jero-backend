@@ -1,0 +1,10 @@
+# Directories
+node_modules
+
+# App files
+.env
+package-lock.json
+
+# System files
+.DS_Store
+Thumbs.db
