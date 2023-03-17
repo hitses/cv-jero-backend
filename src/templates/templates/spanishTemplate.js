@@ -1,5 +1,7 @@
-export const spanishTemplate = (username, content) => `
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //ES" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+export const spanishTemplate = (
+  name,
+  message
+) => `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //ES" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html
   xmlns="http://www.w3.org/1999/xhtml"
   xmlns:v="urn:schemas-microsoft-com:vml"
@@ -122,7 +124,7 @@ export const spanishTemplate = (username, content) => `
       margin: 0;
       padding: 0;
       -webkit-text-size-adjust: 100%;
-      background-color: #000000;
+      background-color: #0f0f0f;
       color: #fffefa;
     "
   >
@@ -236,7 +238,7 @@ export const spanishTemplate = (username, content) => `
                                     font-size: 22px;
                                   "
                                 >
-                                  ¡Hola nombre!<br />Gracias por ponerse en
+                                  ¡Hola ${name}!<br />Gracias por ponerse en
                                   contacto conmigo.
                                 </h1>
                               </td>
@@ -372,7 +374,7 @@ export const spanishTemplate = (username, content) => `
                                   "
                                 >
                                   <p style="font-size: 14px; line-height: 140%">
-                                    ${content}
+                                    ${message}
                                   </p>
                                 </div>
                               </td>
@@ -480,6 +482,18 @@ export const spanishTemplate = (username, content) => `
                                   <p style="font-size: 14px; line-height: 140%">
                                     ¡Un saludo!
                                   </p>
+
+                                  <br />
+                                  <a
+                                    href="https://www.jerogassan.dev/"
+                                    rel="noopener"
+                                    style="
+                                      text-decoration: none;
+                                      color: #fecc00;
+                                    "
+                                    target="_blank"
+                                    >jerogassan.dev</a
+                                  >
                                 </div>
                               </td>
                             </tr>
@@ -764,7 +778,6 @@ export const spanishTemplate = (username, content) => `
                             </tr>
                           </tbody>
                         </table>
-
                         <!--[if (!mso)&(!IE)]><!-->
                       </div>
                       <!--<![endif]-->
@@ -784,5 +797,4 @@ export const spanishTemplate = (username, content) => `
     <!--[if mso]></div><![endif]-->
     <!--[if IE]></div><![endif]-->
   </body>
-</html>
-`
+</html>`
