@@ -3,21 +3,17 @@ import nodemailer from 'nodemailer'
 import * as mailContent from '../templates/contentMails.template.js'
 
 export async function templateMail(type, body) {
-  // TODO: borrar el registro de hora de la petición post
-  console.log(
-    `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`
-  )
+  const search = '\n'
+  const replaceWith = '<br />'
+  const message = body.message.split(search).join(replaceWith)
+
   const TYPE = {
     contact: {
       subject:
         body.language === 'es'
           ? `Contacto a Jerónimo Gascón - ${body.subject}`
           : `Contact to Jerónimo Gascón - ${body.subject}`,
-      content: await mailContent.contact(
-        body.username,
-        body.content,
-        body.language
-      )
+      content: await mailContent.contact(body.name, message, body.language)
     },
     default: 'Content not found'
   }
