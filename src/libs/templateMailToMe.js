@@ -2,18 +2,15 @@ import nodemailer from 'nodemailer'
 
 import * as mailContent from '../templates/contentMails.template.js'
 
-export async function templateMail(type, body) {
+export async function templateMailToMe(type, body) {
   const search = '\n'
   const replaceWith = '<br />'
   const message = body.message.split(search).join(replaceWith)
 
   const TYPE = {
     contact: {
-      subject:
-        body.language === 'es'
-          ? `Contacto a Jerónimo Gascón - ${body.subject}`
-          : `Contact to Jerónimo Gascón - ${body.subject}`,
-      content: await mailContent.contact(body.name, message, body.language)
+      subject: `Contacto de ${body.name} desde www.jerogassan.dev`,
+      content: await mailContent.contactToMe(body.name, message, body.email)
     },
     default: 'Content not found'
   }
@@ -37,7 +34,7 @@ async function nodeMailer(email, subject, content) {
 
   const info = await TRANSPORTER.sendMail({
     from: `'Jerónimo Gascón' <${process.env.AUTH_USER}>`,
-    to: email,
+    to: process.env.AUTH_USER,
     subject: subject,
     html: content
   })
